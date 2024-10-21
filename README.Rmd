@@ -130,7 +130,7 @@ ggplot(mtcars) +
 
 ```{r sleep, echo=FALSE, messages=FALSE, warning=FALSE, eval=TRUE}
 ggplot(mtcars) +
-  geom_fitz(aes(mpg, wt), fitz = "sleep")
+  geom_fitz(aes(mpg, wt), fitz = "sleep") + theme_em()
 ```
 
 
