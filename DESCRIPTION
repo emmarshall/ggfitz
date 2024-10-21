@@ -1,0 +1,16 @@
+Package: ggfitz
+Title: A Geom for Adding Fitz
+Version: 0.0.1
+Author: Emma Marshall
+Maintainer: Emma Marshall <emma.marshall47@gmail.com>
+Description: Provides a set of functions to add Fitz to ggplot2 plots. 
+License: CC0
+Encoding: UTF-8
+Imports: 
+    ggplot2,
+    grid,
+    png,
+    grDevices
+LazyData: true
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.3.2
