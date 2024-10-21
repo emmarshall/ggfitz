@@ -14,3 +14,4 @@ Imports:
 LazyData: true
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.3.2
+URL: https://emmarshall.github.io/ggfitz/

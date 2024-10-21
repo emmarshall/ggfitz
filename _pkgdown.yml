@@ -1,0 +1,11 @@
+url: https://emmarshall.github.io/ggfitz/
+template:
+  bootstrap: 5
+  bslib:
+    bootswatch: materia
+    bg: "#F5F5F5"
+    fg: "#072e3c"
+    primary: "#ff6361"
+    base_font: {google: "IBM Plex Sans"}
+    heading_font: {google: "Newsreader"}
+

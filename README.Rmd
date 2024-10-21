@@ -1,0 +1,167 @@
+---
+output: github_document
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  out.width = "100%",
+  fig.align = "center"
+)
+
+```
+
+
+```{r data, echo=FALSE, message=FALSE, warning=FALSE}
+
+# Create a 3x2 grid
+library(ggplot2)
+library(ggfitz)
+library(emwthemes)
+library(scales)
+
+```
+
+
+
+# ggfitz
+
+<!-- badges: start -->
+
+[![R-CMD-check](https://github.com/emmarshall/ggfitz/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/emmarshall/ggfitz/actions/workflows/R-CMD-check.yaml)
+
+<!-- badges: end -->
+
+The `ggfitz` package is designed for personal use and teaching the power of Fitz to students of data science. It provides an easy to use geom for adding Fitz to ggplot2 objects.  
+
+## Installation
+```r
+# install.packages("devtools")
+devtools::install_github("emmarshall/ggfitz")
+```
+
+## Examples
+
+```{r default, echo=FALSE, messages=FALSE, warning=FALSE, eval=TRUE}
+
+
+
+# Simple example
+ggplot(data.frame(x=1, y=1, image="fitz"), aes(x, y)) +
+  geom_fitz(aes(fitz = image), size = 3) +
+    theme_em() +
+               labs(title = "Fitz (default)",
+       subtitle = "Isn't he cute?") +
+        theme(
+          axis.line = element_blank(),
+          axis.text = element_blank(),
+        axis.title = element_blank(),
+        panel.grid = element_blank())
+
+```
+
+
+```{r options, echo=FALSE, messages=FALSE, warning=FALSE, eval=TRUE}
+
+# Create a data frame with all six Fitz images
+df <- data.frame(
+  x = c(1, 2, 3, 1, 2, 3),
+  y = c(2, 2, 2, 1, 1, 1),
+  image = c("smart", "student", "sleep", "shade", "cool", "captain")
+)
+
+# Custom function to plot multiple Fitz images
+plot_multi_fitz <- function(df) {
+  p <- ggplot(df, aes(x, y))
+  for(i in 1:nrow(df)) {
+    p <- p + geom_fitz(data = df[i,], aes(fitz = image), size = 2.5) +
+       geom_label(aes(x = x, y = y - 0.25, label = image), 
+                 data = df[i,], size = 4, fontface = "bold", fill = "white")
+  }
+  return(p)
+}
+ 
+# Create and display the plot
+plot_multi_fitz(df) +
+  theme_em() +
+  scale_x_continuous(limits = c(0.5, 3.5)) +
+  scale_y_continuous(limits = c(0.5, 2.5)) +
+  labs(title = "Other `Fitz_Geoms`",
+       subtitle = "Includes: smart, student, sleep, shade, cool, captain") +
+  theme(axis.line = element_blank(),
+        axis.text = element_blank(),
+        axis.title = element_blank(),
+        panel.grid = element_blank())
+
+
+```
+
+
+## Fitz `(default)`
+```{r fitz, messages=FALSE, warning=FALSE, eval=TRUE}
+ggplot(mtcars) +
+  geom_fitz(aes(mpg, wt), fitz = "fitz") + theme_em()
+```
+
+
+## Fitz `smart`
+
+```{r smart, echo=FALSE, messages=FALSE, warning=FALSE, eval=TRUE}
+ggplot(mtcars) +
+  geom_fitz(aes(mpg, wt), fitz = "smart") + theme_em()
+```
+
+
+
+
+## Fitz `student`
+
+```{r student, echo=FALSE, messages=FALSE, warning=FALSE, eval=TRUE}
+ggplot(mtcars) +
+  geom_fitz(aes(mpg, wt), fitz = "student") + theme_em()
+```
+
+
+## Fitz `sleep`
+
+```{r sleep, echo=FALSE, messages=FALSE, warning=FALSE, eval=TRUE}
+ggplot(mtcars) +
+  geom_fitz(aes(mpg, wt), fitz = "sleep")
+```
+
+
+
+## Fitz `shade`
+
+```{r shade, echo=FALSE, messages=FALSE, warning=FALSE, eval=TRUE}
+ggplot(mtcars) +
+  geom_fitz(aes(mpg, wt), fitz = "shade") + theme_em()
+```
+
+
+
+## Fitz `cool`
+
+```{r cool, echo=FALSE, messages=FALSE, warning=FALSE, eval=TRUE}
+ggplot(mtcars) +
+  geom_fitz(aes(mpg, wt), fitz = "cool") + theme_em()
+```
+
+## Fitz `captain`
+
+```{r captain, echo=FALSE, messages=FALSE, warning=FALSE, eval=TRUE}
+ggplot(mtcars) +
+  geom_fitz(aes(mpg, wt), fitz = "captain") + theme_em()
+```
+
+
+## Acknowledgements
+
+This package is inspired by the [`ggbernie`](https://github.com/R-CoderDotCom/ggbernie) and [`ggcats`](https://github.com/R-CoderDotCom/ggcats) packages from the memeverse. My primary contribution was the Fitz. 
+
+
+
